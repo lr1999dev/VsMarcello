@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="dialogueBox-marcello.png">
+	<!-- Created with my ass -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Cool text box 10000" x="0" y="0" width="249" height="144"/>
+	<SubTexture name="Cool text box 10001" x="249" y="0" width="249" height="144"/>
+	<SubTexture name="Cool text box 10002" x="0" y="144" width="249" height="144"/>
+	<SubTexture name="Cool text box 10003" x="249" y="144" width="249" height="144"/>
+	<SubTexture name="Cool text box 10004" x="249" y="144" width="249" height="144"/>
+</TextureAtlas>

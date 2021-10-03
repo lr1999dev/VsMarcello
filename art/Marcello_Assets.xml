@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Marcello_Assets.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Marcello face default0000" x="0" y="0" width="119" height="97"/>
+	<SubTexture name="Marcello idle dance0000" x="119" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0001" x="119" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0002" x="478" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0003" x="478" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0004" x="837" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0005" x="837" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0006" x="1196" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0007" x="1196" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0008" x="1555" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0009" x="1555" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0010" x="1914" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0011" x="1914" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0012" x="2273" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0013" x="2273" y="0" width="359" height="669"/>
+	<SubTexture name="Marcello idle dance0014" x="2632" y="0" width="359" height="669"/>
+</TextureAtlas>

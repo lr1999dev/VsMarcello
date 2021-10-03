@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bambi_evil.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Marcello Note Anim DOWN0000" x="0" y="0" width="117" height="219"/>
+	<SubTexture name="Marcello Note Anim LEFT0000" x="0" y="0" width="117" height="219"/>
+	<SubTexture name="Marcello Note Anim RIGHT0000" x="0" y="0" width="117" height="219"/>
+	<SubTexture name="Marcello Note Anim UP0000" x="0" y="0" width="117" height="219"/>
+	<SubTexture name="Marcello idle dance0000" x="0" y="0" width="117" height="219"/>
+</TextureAtlas>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bambi_assets.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Marcello Note Anim DOWN0000" x="0" y="0" width="147" height="218"/>
+	<SubTexture name="Marcello Note Anim DOWN0001" x="147" y="0" width="147" height="218"/>
+	<SubTexture name="Marcello Note Anim DOWN0002" x="294" y="0" width="147" height="218"/>
+	<SubTexture name="Marcello Note Anim LEFT0000" x="441" y="0" width="177" height="218"/>
+	<SubTexture name="Marcello Note Anim LEFT0001" x="618" y="0" width="177" height="218"/>
+	<SubTexture name="Marcello Note Anim LEFT0002" x="795" y="0" width="177" height="218"/>
+	<SubTexture name="Marcello Note Anim RIGHT0000" x="972" y="0" width="168" height="218"/>
+	<SubTexture name="Marcello Note Anim RIGHT0001" x="1140" y="0" width="168" height="218"/>
+	<SubTexture name="Marcello Note Anim RIGHT0002" x="1308" y="0" width="168" height="218"/>
+	<SubTexture name="Marcello Note Anim UP0000" x="1476" y="0" width="128" height="313"/>
+	<SubTexture name="Marcello Note Anim UP0001" x="1604" y="0" width="128" height="313"/>
+	<SubTexture name="Marcello Note Anim UP0002" x="1732" y="0" width="128" height="313"/>
+	<SubTexture name="Marcello idle dance0000" x="1860" y="0" width="117" height="219"/>
+	<SubTexture name="Marcello idle dance0001" x="0" y="313" width="117" height="219"/>
+	<SubTexture name="Marcello idle dance0002" x="117" y="313" width="117" height="219"/>
+</TextureAtlas>
