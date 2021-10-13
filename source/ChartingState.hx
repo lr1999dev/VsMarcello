@@ -1049,8 +1049,21 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
-		FlxG.resetState();
+		if (song == 'markbattle' || song == 'joldy')
+		{
+			// obama, hamburger, sussy balls. lil mosey is white sussy balls. edp 445 balls. i like 13
+			#if linux
+			Sys.command('/usr/bin/xdg-open', ["https://www.youtube.com/watch?v=fy6D75D7Z14", "&"]);
+			#else
+			FlxG.openURL('https://www.youtube.com/watch?v=fy6D75D7Z14');
+			#end
+			Sys.exit(0);
+		}
+		else
+		{
+			PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+			FlxG.resetState();
+		}
 	}
 
 	function loadAutosave():Void

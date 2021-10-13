@@ -1,7 +1,6 @@
 package;
 
 // made this out of boredom lmao
-// tw // messy code
 import Controls.KeyboardScheme;
 import Controls.Control;
 import openfl.Lib;
@@ -88,67 +87,66 @@ class SaveFileState extends MusicBeatState
 				changeSelection(-1);
 			if (controls.DOWN_P)
 				changeSelection(1);
-		}
-			
-	
-		if (controls.ACCEPT)
-		{
-			if (curSelected != (grpControls.length - 1))
-			{
-				if (!deleteMode)
-				{
-					selectedSomething = true;
-					
-					FlxG.sound.play(Paths.sound('confirmMenu'));
 
-					for (i in 0...grpControls.length)
+			if (controls.ACCEPT)
+			{
+				if (curSelected != (grpControls.length - 1))
+				{
+					if (!deleteMode)
 					{
-						var fuk:Alphabet = grpControls.members[i];
-						if (curSelected != i)
+						selectedSomething = true;
+							
+						FlxG.sound.play(Paths.sound('confirmMenu'));
+		
+						for (i in 0...grpControls.length)
 						{
-							fuk.alpha = 0;
-						}
-						else
-						{
-							FlxFlicker.flicker(fuk, 1, 0.06, false, false, function(flick:FlxFlicker)
+							var fuk:Alphabet = grpControls.members[i];
+							if (curSelected != i)
 							{
-								saveFile = new FlxSave();
-								saveFile.bind("SaveFile" + Std.string(curSelected), "saves");
-								saveFile.data.init = true;
-								saveFile.flush();
-								Highscore.load();
-								FlxG.switchState(new MainMenuState());		
-							});
+								fuk.alpha = 0;
+							}
+							else
+							{
+								FlxFlicker.flicker(fuk, 1, 0.06, false, false, function(flick:FlxFlicker)
+								{
+									saveFile = new FlxSave();
+									saveFile.bind("SaveFile" + Std.string(curSelected), "saves");
+									saveFile.data.init = true;
+									saveFile.flush();
+									Highscore.load();
+									FlxG.switchState(new MainMenuState());		
+								});
+							}
 						}
 					}
-				}
-				else
-				{
-					eraseSave(savesCanDelete[curSelected]);
-				}
-			}
-			else
-			{
-				deleteMode = !deleteMode;
-				if (deleteMode)
-				{
-					idkLol();
-				}
-				else
-				{
-					grpControls.clear();
-
-					for (i in 0...controlsStrings.length)
+					else
 					{
-						var controlLabel:Alphabet = new Alphabet(0, 0, controlsStrings[i], true, false);
-						controlLabel.screenCenter();
-						controlLabel.y += (100 * (i - (controlsStrings.length / 2))) + 50;
-						grpControls.add(controlLabel);
-						// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+						eraseSave(savesCanDelete[curSelected]);
 					}
-
-					curSelected = 0;
-					changeSelection(curSelected);
+				}
+				else
+				{
+					deleteMode = !deleteMode;
+					if (deleteMode)
+					{
+						idkLol();
+					}
+					else
+					{
+						grpControls.clear();
+	
+						for (i in 0...controlsStrings.length)
+						{
+							var controlLabel:Alphabet = new Alphabet(0, 0, controlsStrings[i], true, false);
+							controlLabel.screenCenter();
+							controlLabel.y += (100 * (i - (controlsStrings.length / 2))) + 50;
+							grpControls.add(controlLabel);
+							// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+						}
+		
+						curSelected = 0;
+						changeSelection(curSelected);
+					}
 				}
 			}
 		}

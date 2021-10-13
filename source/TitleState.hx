@@ -498,11 +498,20 @@ class TitleState extends MusicBeatState
 		super.destroy();
 	}
 
-	function recordingSoftwareOpened():Bool
+	public static function recordingSoftwareOpened():Bool
 	{
+		var fs:Bool = FlxG.fullscreen;
+		if (fs)
+		{
+			FlxG.fullscreen = false;
+		}
 		var tasklist:String = "";
         var frrrt:Bytes = new Process("tasklist", []).stdout.readAll();
         tasklist = frrrt.getString(0, frrrt.length);
+		if (fs)
+		{
+			FlxG.fullscreen = true;
+		}
         return tasklist.contains("obs64.exe") || tasklist.contains("obs32.exe") || tasklist.contains("xsplit") || tasklist.contains("bandicam");
 	}
 }

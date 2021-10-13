@@ -750,7 +750,7 @@ class PlayState extends MusicBeatState
 				dad.y += 225;
 				dad.x += 100;
 				camPos.x += 400;
-				add(new FlxTrail(dad, null, 4, 24, 0.3, 0.069));
+				add(new DeltaTrail(dad, null, 4, 24 / 60, 0.3, 0.069));
 		}
 
 
@@ -806,6 +806,13 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'blocking')
 		{
 			dialogue.push(":dad:YOU LOSE THIS ONE = I DELETE THE GAME");
+		}
+		else if (SONG.song.toLowerCase() == 'trollhazard' && TitleState.recordingSoftwareOpened())
+		{
+			for (i in CoolUtil.coolTextFile(Paths.txt('trollhazard/trollhazardDialogueSecretAddon')))
+			{
+				dialogue.push(i);
+			}
 		}
 		#end
 
@@ -1769,10 +1776,29 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.SEVEN)
 		{
-			#if desktop
-			DiscordClient.changePresence("Chart Editor", null, null, true);
-			#end
-			FlxG.switchState(new ChartingState());
+			if (SONG.song.toLowerCase() != 'joldy')
+			{
+				#if desktop
+				DiscordClient.changePresence("Chart Editor", null, null, true);
+				#end
+				FlxG.switchState(new ChartingState());
+			}
+			else
+			{
+				// COPIED FROM FREEPLAYSTATE LMAO!!!!
+				var poop:String = Highscore.formatSong('markbattle', 2);
+
+				trace(poop);
+
+				PlayState.SONG = Song.loadFromJson(poop, 'markbattle');
+				PlayState.isStoryMode = false;
+				PlayState.storyDifficulty = 2;
+
+				PlayState.storyWeek = 1;
+				PlayState.restartWithCutscene = true;
+				trace('CUR WEEK' + PlayState.storyWeek);
+				LoadingState.loadAndSwitchState(new PlayState());
+			}
 		}
 
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
