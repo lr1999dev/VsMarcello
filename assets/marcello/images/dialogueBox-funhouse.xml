@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="dialogueBox-funhouse.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Cool text box 10000" x="0" y="0" width="249" height="145"/>
+	<SubTexture name="Cool text box 10001" x="0" y="0" width="249" height="145"/>
+	<SubTexture name="Cool text box 10002" x="259" y="0" width="249" height="145"/>
+	<SubTexture name="Cool text box 10003" x="259" y="0" width="249" height="145"/>
+	<SubTexture name="Cool text box 10004" x="0" y="155" width="249" height="145"/>
+	<SubTexture name="Cool text box 10005" x="0" y="155" width="249" height="145"/>
+	<SubTexture name="Cool text box 10006" x="259" y="155" width="249" height="145"/>
+	<SubTexture name="Cool text box 10007" x="259" y="155" width="249" height="145"/>
+	<SubTexture name="Cool text box 10008" x="0" y="310" width="249" height="145"/>
+	<SubTexture name="Cool text box 10009" x="0" y="310" width="249" height="145"/>
+	<SubTexture name="Cool text box 10010" x="259" y="310" width="249" height="145"/>
+	<SubTexture name="Cool text box 10011" x="259" y="310" width="249" height="145"/>
+</TextureAtlas>

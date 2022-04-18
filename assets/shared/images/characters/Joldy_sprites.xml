@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Joldy sprites.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Joldy Idle0000" x="0" y="0" width="385" height="437" frameX="-4" frameY="-63" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0001" x="0" y="0" width="385" height="437" frameX="-4" frameY="-63" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0002" x="385" y="0" width="402" height="441" frameX="0" frameY="-59" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0003" x="385" y="0" width="402" height="441" frameX="0" frameY="-59" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0004" x="787" y="0" width="363" height="464" frameX="-14" frameY="-37" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0005" x="787" y="0" width="363" height="464" frameX="-14" frameY="-37" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0006" x="1150" y="0" width="320" height="490" frameX="-33" frameY="-11" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0007" x="1150" y="0" width="320" height="490" frameX="-33" frameY="-11" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0008" x="1470" y="0" width="310" height="502" frameX="-39" frameY="0" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0009" x="1470" y="0" width="310" height="502" frameX="-39" frameY="0" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0010" x="1470" y="0" width="310" height="502" frameX="-39" frameY="0" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0011" x="1470" y="0" width="310" height="502" frameX="-39" frameY="0" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0012" x="1470" y="0" width="310" height="502" frameX="-39" frameY="0" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy Idle0013" x="1470" y="0" width="310" height="502" frameX="-39" frameY="0" frameWidth="402" frameHeight="502"/>
+	<SubTexture name="Joldy note down0000" x="0" y="502" width="434" height="390" frameX="0" frameY="-22" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0001" x="0" y="502" width="434" height="390" frameX="0" frameY="-22" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0002" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0003" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0004" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0005" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0006" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0007" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0008" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0009" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0010" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0011" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0012" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note down0013" x="434" y="502" width="402" height="410" frameX="-30" frameY="0" frameWidth="434" frameHeight="412"/>
+	<SubTexture name="Joldy note left0000" x="836" y="502" width="513" height="305" frameX="0" frameY="0" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0001" x="836" y="502" width="513" height="305" frameX="0" frameY="0" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0002" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0003" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0004" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0005" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0006" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0007" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0008" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0009" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0010" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0011" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0012" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note left0013" x="0" y="912" width="811" height="305" frameX="-39" frameY="-1" frameWidth="850" frameHeight="306"/>
+	<SubTexture name="Joldy note right0000" x="811" y="912" width="484" height="391" frameX="-17" frameY="0" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0001" x="811" y="912" width="484" height="391" frameX="-17" frameY="0" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0002" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0003" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0004" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0005" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0006" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0007" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0008" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0009" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0010" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0011" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0012" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note right0013" x="1295" y="912" width="555" height="449" frameX="0" frameY="-14" frameWidth="555" frameHeight="463"/>
+	<SubTexture name="Joldy note up0000" x="0" y="1361" width="370" height="621" frameX="-11" frameY="0" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0001" x="0" y="1361" width="370" height="621" frameX="-11" frameY="0" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0002" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0003" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0004" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0005" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0006" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0007" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0008" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0009" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0010" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+	<SubTexture name="Joldy note up0011" x="370" y="1361" width="395" height="584" frameX="0" frameY="-41" frameWidth="395" frameHeight="625"/>
+</TextureAtlas>

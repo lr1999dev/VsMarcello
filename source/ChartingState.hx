@@ -224,7 +224,7 @@ class ChartingState extends MusicBeatState
 		stepperSpeed.value = _song.speed;
 		stepperSpeed.name = 'song_speed';
 
-		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 65, 1, 1, 1, 339, 0);
+		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 65, 1, 1, 1, 999, 0);
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 
@@ -1051,12 +1051,7 @@ class ChartingState extends MusicBeatState
 	{
 		if (song == 'markbattle' || song == 'joldy')
 		{
-			// obama, hamburger, sussy balls. lil mosey is white sussy balls. edp 445 balls. i like 13
-			#if linux
-			Sys.command('/usr/bin/xdg-open', ["https://www.youtube.com/watch?v=fy6D75D7Z14", "&"]);
-			#else
-			FlxG.openURL('https://www.youtube.com/watch?v=fy6D75D7Z14');
-			#end
+			FlxG.openURL('https://sites.google.com/view/marcelloisangry');
 			Sys.exit(0);
 		}
 		else

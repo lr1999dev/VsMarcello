@@ -31,13 +31,9 @@ class HealthIcon extends FlxSprite
 			missing = true;
 		
 		if (!missing)
-		{
 			loadGraphic(Paths.image('icons/icon-' + char), true, 150, 150);
-		}
 		else
-		{
-			loadGraphic(Base64Graphics.getBase64Graphic(Base64Graphics.iconThing), true, 150, 150);
-		}
+			makeGraphic(150, 150, 0xFFFB40F9);
 
 		if (initialized)
 		{
@@ -50,7 +46,7 @@ class HealthIcon extends FlxSprite
 		animation.play(char);
 
 		switch(char){
-			case 'bf-pixel' | 'senpai' | 'senpai-angry' | 'spirit' | 'gf-pixel' | 'bambi' | 'bambi-evil':
+			case 'bf-pixel' | 'senpai' | 'senpai-angry' | 'spirit' | 'gf-pixel' | 'bambi' | 'bambi-evil' | 'bf-funhouse':
 				{
 
 				}

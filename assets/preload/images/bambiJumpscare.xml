@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bambiJumpscare.png">
+	<!-- Created with my ass -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Scary 10000" x="0" y="0" width="1280" height="720"/>
+	<SubTexture name="Scary 10001" x="1280" y="0" width="1280" height="720"/>
+	<SubTexture name="Scary 10002" x="0" y="0" width="1280" height="720"/>
+	<SubTexture name="Scary 10003" x="1280" y="0" width="1280" height="720"/>
+	<SubTexture name="Scary 10004" x="1280" y="0" width="1280" height="720"/>
+	<SubTexture name="Scary 10005" x="0" y="0" width="1280" height="720"/>
+</TextureAtlas>

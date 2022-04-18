@@ -26,8 +26,6 @@ class SaveFileState extends MusicBeatState
 
 	var emptySave:Array<Bool> = [true, true, true];
 
-	var shpop:Array<String> = ['One', 'Two', 'Three'];
-
 	var controlsStrings:Array<String> = [];
 	var savesCanDelete:Array<Int> = [];
 
@@ -48,7 +46,7 @@ class SaveFileState extends MusicBeatState
 			trace("Save File " + Std.string(i + 1));
 			emptySave[i] = (!save.data.init || save.data.init == null);
 			save.flush();
-			controlsStrings.push("Save File " + shpop[i] + (!emptySave[i] ? "" : " Empty"));
+			controlsStrings.push("Save File " + Std.string(i + 1) + (!emptySave[i] ? "" : " Empty"));
 		}
 
 		controlsStrings.push("Erase Save");
@@ -73,6 +71,8 @@ class SaveFileState extends MusicBeatState
 			grpControls.add(controlLabel);
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 		}
+
+		changeSelection();
 
 		super.create();
 	}
@@ -165,7 +165,7 @@ class SaveFileState extends MusicBeatState
 		save.flush();
 		
 		emptySave[id] = true;
-		controlsStrings[id] = "Save File " + shpop[id] + " Empty";
+		controlsStrings[id] = "Save File " + Std.string(id + 1) + " Empty";
 		idkLol();
 	}
 
@@ -190,7 +190,7 @@ class SaveFileState extends MusicBeatState
 
 		for (i in 0...savesCanDelete.length)
 		{
-			savesAvailable.push("Save File " + shpop[i]);
+			savesAvailable.push("Save File " + Std.string(i + 1));
 		}
 
 		savesAvailable.push("Cancel");
@@ -204,8 +204,7 @@ class SaveFileState extends MusicBeatState
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 		}
 
-		curSelected = 0;
-		changeSelection(curSelected);
+		changeSelection();
 	}
 
 	var isSettingControl:Bool = false;

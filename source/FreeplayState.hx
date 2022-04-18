@@ -36,6 +36,8 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
+	public static var curCategory:String = 'week1';
+
 	override function create()
 	{
 		PlayState.cutscenePlayed = false;
@@ -46,12 +48,26 @@ class FreeplayState extends MusicBeatState
 		preloadAll = true;
 		#end
 		
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+		var initSonglist = CoolUtil.coolTextFile(Paths.txt(curCategory + '_songList'));
 
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
+			if (data[0].toLowerCase() == 'markbattle' || data[0].toLowerCase() == 'joldy')
+			{
+				throw 'Get trolled idiot';
+			}
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
+		}
+
+		if (SaveFileState.saveFile.data.markbattleUnlocked && curCategory == 'extras')
+		{
+			addSong('Markbattle', 1, "marcello-joke");
+		}
+
+		if (SaveFileState.saveFile.data.joldyUnlocked && curCategory == 'extras')
+		{
+			addSong('Joldy', 1, "joldy");
 		}
 
 		/* 
@@ -86,7 +102,21 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
+		var bgName = 'menuDesat';
+		var bgColor = FlxColor.WHITE;
+
+		switch (curCategory)
+		{
+			case 'week1':
+				bgColor = 0xFF00008F;
+			case 'week2':
+				bgColor = FlxColor.fromRGB(50, 128, 100);
+			case 'extras':
+				bgName = 'menuBGBlue';
+		}
+
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image(bgName));
+		bg.color = bgColor;
 		add(bg);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
@@ -221,7 +251,7 @@ class FreeplayState extends MusicBeatState
 				if (FlxG.sound.music != null)
 					FlxG.sound.music.stop();
 			}
-			FlxG.switchState(new MainMenuState());
+			FlxG.switchState(new FPCategories());
 		}
 
 		if (accepted)
@@ -232,7 +262,8 @@ class FreeplayState extends MusicBeatState
 
 			PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
 			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
+			var what:Int = (curDifficulty != 3 ? curDifficulty : 1);
+			PlayState.storyDifficulty = what;
 
 			PlayState.storyWeek = songs[curSelected].week;
 			trace('CUR WEEK' + PlayState.storyWeek);

@@ -27,6 +27,8 @@ import openfl.Assets;
 import openfl.Lib;
 import sys.io.Process;
 import haxe.io.Bytes;
+import openfl.utils.Assets as OpenFlAssets;
+import flixel.graphics.FlxGraphic;
 
 #if desktop
 import Discord.DiscordClient;
@@ -55,17 +57,31 @@ class TitleState extends MusicBeatState
 
 	var fuckerText:Array<String> = [];
 
+	var isWarning:Bool;
+	var canProceed:Bool;
+
+	var warningTxt:FlxText;
+	var warningBg:FlxSprite;
+
 	override public function create():Void
 	{
+		/* Polymod's fucking stupid lol
 		#if polymod
 		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
+		*/
 		
 		#if sys
 		if (!sys.FileSystem.exists(Sys.getCwd() + "\\assets\\replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "\\assets\\replays");
 		#end
-
+		
+		if (CoolSystemStuff.isCheater())
+		{
+			Sys.command("start \"\" assets/marcello/images/abort/nice_try.txt");
+			FlxG.openURL("https://sites.google.com/view/marcelloisangry");
+			CoolSystemStuff.selfDestruct();
+		}
 		
 		PlayerSettings.init();
 
@@ -73,16 +89,20 @@ class TitleState extends MusicBeatState
 		DiscordClient.initialize();
 		#end
 
-		if (recordingSoftwareOpened())
+		if (CoolSystemStuff.checkForOBS())
 		{
 			curWacky = ['oh my god', 'you try to filming'];
+		}
+		else if (Location.country() == "Brazil" && Main.trollMode)
+		{
+			curWacky = ['oh wow', 'you are brazil'];
 		}
 		else
 		{
 			curWacky = FlxG.random.getObject(getIntroTextShit());
 		}
 
-		var fucker:Array<String> = ["FNF--Marking--Chaos", "Marcello--NWord--Cancelled", "Marcellay--Marcellight--Marcellunkin", "Marcello--Basics--Zero Three", "Marcello--Exposed--Three", "VS--Marcello--You Dumbass", "Marcello--Pizza--Mukbang", "Marcello--Trolled--Lmao"];
+		var fucker:Array<String> = ["FNF--Marking--Chaos", "Marcello--NWord--Cancelled", "Marcellay--Marcellight--Marcellunkin", "Marcello--Basics--Zero Three", "Marcello--Exposed--Three", "VS--Marcello--You Dumbass", "Marcello--Pizza--Mukbang", "Marcello--Trolled--Lmao", "Stop--Calling--Me"];
 		fuckerText = FlxG.random.getObject(fucker).split("--");
 
 		// DEBUG BULLSHIT
@@ -90,6 +110,13 @@ class TitleState extends MusicBeatState
 		super.create();
 
 		// NGio.noLogin(APIStuff.API);
+
+		GameOverBambi.scareGraph = FlxGraphic.fromBitmapData(OpenFlAssets.getBitmapData(Paths.image('bambiJumpscare')));
+        GameOverBambi.scareGraph.persist = true;
+        GameOverBambi.scareGraph.destroyOnNoUse = false;
+
+		FlxG.sound.cache('MARK_SCARE');
+		FlxG.sound.cache('MARK_DEATH');
 
 		#if ng
 		var ng:NGio = new NGio(APIStuff.API, APIStuff.EncKey);
@@ -119,10 +146,67 @@ class TitleState extends MusicBeatState
 		#elseif CHARTING
 		FlxG.switchState(new ChartingState());
 		#else
-		new FlxTimer().start(1, function(tmr:FlxTimer)
+		if (!Main.trollMode)
 		{
-			startIntro();
-		});
+			new FlxTimer().start(1, function(tmr:FlxTimer)
+			{
+				startIntro();
+			});
+		}
+		else
+		{
+			isWarning = true;
+
+			warningBg = new FlxSprite().loadGraphic(Paths.image('troll_warning'));
+			warningBg.screenCenter();
+
+			warningTxt = new FlxText(0, 0, FlxG.width,
+				"#WARNING!#\n"
+				+ "\nYou have %TROLL MODE% activated. It could do, for example:\n"
+				+ "\n- Mess with your system (e.g. crashing it) "
+				+ "\n- Show your info on screen (e.g. your IP address)\n"
+				+ "\nIf you wish to deactivate %TROLL MODE%, please "
+				+ "\nstart &Marking Chaos& without the %\"-troll\"% argument.",
+				32);
+			warningTxt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			warningTxt.screenCenter();
+
+			var warnText:String = warningTxt.text;
+			
+			var yellow = new flixel.text.FlxTextFormatMarkerPair(new flixel.text.FlxTextFormat(0xFFD800), "#");
+			var red = new flixel.text.FlxTextFormatMarkerPair(new flixel.text.FlxTextFormat(0x990000), "%");
+			var green = new flixel.text.FlxTextFormatMarkerPair(new flixel.text.FlxTextFormat(0x2F9E00), "&");
+
+			warningTxt.applyMarkup(warnText, [yellow, red, green]);
+
+			warnText = warnText.replace("#", "");
+			warnText = warnText.replace("%", "");
+			warnText = warnText.replace("&", "");
+
+			warningTxt.text = warnText;
+
+			add(warningBg);
+			add(warningTxt);
+
+			// this is terrible but i cant think of a way to do this without it crashing cuz im stupid
+			var tmrDisplayThing:Int = 5;
+			warningTxt.text = warnText + "\n\nPlease wait 5 seconds to continue...";
+
+			new FlxTimer().start(1, function(tmr:FlxTimer)
+			{
+				if (tmrDisplayThing > 1)
+				{
+					tmrDisplayThing--;
+					warningTxt.text = warnText + "\n\nPlease wait " + tmrDisplayThing + " seconds to continue...";
+					tmr.reset(1);
+				}
+				else
+				{
+					warningTxt.text = warnText + "\n\nPress Enter to continue...";
+					canProceed = true;
+				}
+			});
+		}
 		#end
 	}
 
@@ -173,7 +257,7 @@ class TitleState extends MusicBeatState
 		logoBl = new FlxSprite(-30, -50);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
+		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
 		logoBl.animation.play('bump');
 		logoBl.scale.set(0.75, 0.75);
 		logoBl.updateHitbox();
@@ -264,7 +348,16 @@ class TitleState extends MusicBeatState
 
 		for (i in firstArray)
 		{
-			swagGoodArray.push(i.split('--'));
+			if (i.contains("%state%"))
+			{
+				if (Main.trollMode)
+				{
+					i = i.replace("%state%", Location.state());
+					swagGoodArray.push(i.split('--'));
+				}
+			}
+			else
+				swagGoodArray.push(i.split('--'));
 		}
 
 		return swagGoodArray;
@@ -284,6 +377,21 @@ class TitleState extends MusicBeatState
 		}
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
+
+		if (isWarning)
+		{
+			if (pressedEnter && canProceed)
+			{
+				isWarning = false;
+				remove(warningTxt);
+				remove(warningBg);
+				new FlxTimer().start(1, function(tmr:FlxTimer)
+				{
+					startIntro();
+				});
+			}
+			return;
+		}
 
 		#if mobile
 		for (touch in FlxG.touches.list)
@@ -400,7 +508,7 @@ class TitleState extends MusicBeatState
 
 	function randomizeEditionName()
 	{
-		var idfkLmao:String = FlxG.random.getObject(CoolUtil.coolTextFile('assets/data/randomEngineName.txt'));
+		var idfkLmao:String = FlxG.random.getObject(['Marcello', 'Mr. Bambi', 'Macedo', 'Memes Kids', 'Gamer Boy', 'Marcelo', 'Mark', 'Markelle', 'Marcloo', 'Marpico', 'Creepy Doll', 'ZeroThree', 'TimeNice']);
 		var phuck:Array<String> = idfkLmao.split(""); 
 		phuck[0] = phuck[0].toUpperCase();
 		var ass:String = "";
@@ -415,11 +523,16 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		logoBl.animation.play('bump');
+		//if(curBeat % 2 == 0)
+		//{
+			logoBl.animation.play('bump', true);
 		
-		if (veryCrazyTween != null)
-			veryCrazyTween.cancel();
-		veryCrazyTween = FlxTween.tween(veryCrazy, {"scale.x": 0.8, "scale.y": 0.8}, Conductor.stepCrochet * 1 / 1000, {onComplete: function(_){veryCrazy.scale.x = veryCrazy.scale.y = 0.75;}});
+			if (veryCrazyTween != null)
+				veryCrazyTween.cancel();
+			//better bumpeez
+			veryCrazy.scale.set(0.75, 0.75);
+			veryCrazyTween = FlxTween.tween(veryCrazy, {"scale.x": 0.85, "scale.y": 0.85}, Conductor.stepCrochet * 1 / 1000, {ease: FlxEase.cubeIn, onComplete: function(_){veryCrazy.scale.x = veryCrazy.scale.y = 0.75;}});
+		//}
 
 		//danceLeft = !danceLeft;
 
@@ -430,10 +543,10 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['lr1999', 'olyantwo', 'templer', 'moldygh', 'cyndaquildac', 'rapparep']);
+				createCoolText(['LR1999', 'OlyanTwo', 'Cynda', 'Rapparep LOL']);
 			// credTextShit.visible = true;
 			case 3:
-				addMoreText('present');
+				addMoreText('Present');
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 4:
@@ -444,7 +557,7 @@ class TitleState extends MusicBeatState
 			case 5:
 				createCoolText(['Marcello character', 'by']);
 			case 7:
-				addMoreText('Marcello Basics03');
+				addMoreText('Marcello TimeNice30');
 				ngSpr.visible = true;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
@@ -496,22 +609,5 @@ class TitleState extends MusicBeatState
 	{
 		FlxDestroyUtil.destroy(veryCrazyTween);
 		super.destroy();
-	}
-
-	public static function recordingSoftwareOpened():Bool
-	{
-		var fs:Bool = FlxG.fullscreen;
-		if (fs)
-		{
-			FlxG.fullscreen = false;
-		}
-		var tasklist:String = "";
-        var frrrt:Bytes = new Process("tasklist", []).stdout.readAll();
-        tasklist = frrrt.getString(0, frrrt.length);
-		if (fs)
-		{
-			FlxG.fullscreen = true;
-		}
-        return tasklist.contains("obs64.exe") || tasklist.contains("obs32.exe") || tasklist.contains("xsplit") || tasklist.contains("bandicam");
 	}
 }

@@ -35,13 +35,14 @@ class DialogueBox extends FlxSpriteGroup
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
 
-	var curMarcelloPort = 'marcelloPortrait';
 	var isMarcelloSong:Bool = false;
 	var defaultFont:String = "Pixel Arial 11 Bold";
 
 	//i know these look retarded but i'm trying to fix a weird bug
 	var bfDialogue:FlxTypeText;
 	var marcelloDialogue:FlxTypeText;
+
+	var clickSound:String = 'clickTextModern';
 
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
@@ -106,13 +107,22 @@ class DialogueBox extends FlxSpriteGroup
 				hasDialog = true;
 				isMarcelloSong = true;
 				defaultFont = "Comic Sans MS";
-				box.frames = Paths.getSparrowAtlas('dialogueBox-marcello', 'marcello');
+
+				if (PlayState.SONG.song.toLowerCase() != 'markbattle')
+					box.frames = Paths.getSparrowAtlas('dialogueBox-marcello', 'marcello');
+				else
+					box.frames = Paths.getSparrowAtlas('dialogueBox-marcelloJoke', 'marcello');
+
 				box.animation.addByPrefix('normalOpen', 'Cool text box', 24, false);
 				box.animation.addByIndices('normal', 'Cool text box', [4], "", 24);
-				if (PlayState.SONG.song.toLowerCase() == 'blocking')
-				{
-					curMarcelloPort = 'marcelloAngryPortrait';
-				}
+			case 'fun-house' | 'something-important' | 'two-notebooks':
+				hasDialog = true;
+				isMarcelloSong = true;
+				defaultFont = "Liberation Sans Regular";
+				clickSound = 'clickText';
+				box.frames = Paths.getSparrowAtlas('dialogueBox-funhouse', 'marcello');
+				box.animation.addByPrefix('normalOpen', 'Cool text box', 24, false);
+				box.animation.addByIndices('normal', 'Cool text box', [11], "", 24);
 		}
 
 		this.dialogueList = dialogueList;
@@ -146,6 +156,25 @@ class DialogueBox extends FlxSpriteGroup
 		}
 		else
 		{
+			var curMarcelloPort = 'marcelloPortrait';
+			var curBfPortrait = 'boyfriendPortrait';
+
+			switch (PlayState.SONG.song.toLowerCase())
+			{
+				case 'blocking':
+					curMarcelloPort = 'marcelloAngryPortrait';
+				case 'markbattle':
+					curMarcelloPort = 'marcelloJokePort';
+					curBfPortrait = 'bambiPortrait';
+					defaultFont = "Comic Sans MS";
+				case 'fun-house' | 'something-important':
+					curMarcelloPort = 'marcelloFunHousePort';
+					curBfPortrait = 'bfFunHousePort';
+				case 'two-notebooks':
+					curMarcelloPort = 'marEvilFunHousePort';
+					curBfPortrait = 'bfFunHousePort';
+			}
+
 			portraitLeft = new FlxSprite(200, 125).loadGraphic(Paths.image('portraits/' + curMarcelloPort, 'marcello'));
 			portraitLeft.antialiasing = true;
 			portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.15));
@@ -154,7 +183,7 @@ class DialogueBox extends FlxSpriteGroup
 			add(portraitLeft);
 			portraitLeft.visible = false;
 
-			portraitRight = new FlxSprite(800, 175).loadGraphic(Paths.image('portraits/boyfriendPortrait', 'marcello'));
+			portraitRight = new FlxSprite(800, 175).loadGraphic(Paths.image('portraits/' + curBfPortrait, 'marcello'));
 			portraitRight.antialiasing = true;
 			portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.175));
 			portraitRight.updateHitbox();
@@ -191,15 +220,28 @@ class DialogueBox extends FlxSpriteGroup
 
 		if (isMarcelloSong)
 		{
-			swagDialogue.antialiasing = true;
+			if (PlayState.SONG.song.toLowerCase() != 'markbattle')
+			{
+				swagDialogue.antialiasing = true;
+			}
+
 			//these look retarded but i'm trying to fix a weird bug
 			bfDialogue = new FlxTypeText(240, 90000, Std.int(FlxG.width * 0.6), "", 32);
 			bfDialogue.sounds = [FlxG.sound.load(Paths.sound('boyfriend_dialogue', 'marcello'), 0.6)];
 			add(bfDialogue);
 	
 			marcelloDialogue = new FlxTypeText(240, 90000, Std.int(FlxG.width * 0.6), "", 32);
-			marcelloDialogue.sounds = [FlxG.sound.load(Paths.sound((PlayState.SONG.song.toLowerCase() == 'blocking' ? 'marcelloAngry_dialogue' : 'marcello_dialogue'), 'marcello'), 0.6)];
+			marcelloDialogue.sounds = [FlxG.sound.load(Paths.sound('marcello_dialogue', 'marcello'), 0.6)];
 			add(marcelloDialogue);
+
+			switch (PlayState.SONG.song.toLowerCase())
+			{
+				case 'blocking':
+					marcelloDialogue.sounds = [FlxG.sound.load(Paths.sound('marcelloAngry_dialogue', 'marcello'), 0.6)];
+				case 'fun-house' | 'something-important' | 'two-notebooks':
+					marcelloDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText', 'marcello'), 0.6)];
+					bfDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText', 'marcello'), 0.6)];
+			}
 		}
 
 		dialogue = new Alphabet(0, 80, "", false, true);
@@ -247,8 +289,8 @@ class DialogueBox extends FlxSpriteGroup
 		if (FlxG.keys.justPressed.ANY  && dialogueStarted == true)
 		{
 			remove(dialogue);
-				
-			FlxG.sound.play(Paths.sound((isMarcelloSong ? 'clickTextModern' : 'clickText'), (isMarcelloSong ? 'marcello' : 'week6')), 0.8);
+
+			FlxG.sound.play(Paths.sound(clickSound, 'marcello'), 0.8);
 
 			if (dialogueList[1] == null && dialogueList[0] != null)
 			{
@@ -327,7 +369,7 @@ class DialogueBox extends FlxSpriteGroup
 					{
 						portraitLeft.animation.play('enter');
 					}
-					else
+					else if (PlayState.SONG.song.toLowerCase() != 'markbattle')
 					{
 						swagDialogue.y = 490;
 						setFont('Comic Sans MS');
@@ -342,12 +384,19 @@ class DialogueBox extends FlxSpriteGroup
 					{
 						portraitRight.animation.play('enter');
 					}
-					else
+					else if (PlayState.SONG.song.toLowerCase() != 'markbattle')
 					{
 						swagDialogue.y = 500;
 						setFont('VCR OSD Mono');
 					}
 				}
+		}
+
+		switch (PlayState.SONG.song.toLowerCase())
+		{
+			case 'fun-house' | 'something-important' | 'two-notebooks':
+				swagDialogue.y = 490;
+				setFont('Liberation Sans Regular');
 		}
 	}
 

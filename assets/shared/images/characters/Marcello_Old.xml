@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Marcello_Old.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Marcello idle dance0000" x="0" y="0" width="240" height="667" frameX="-42" frameY="-2" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0001" x="0" y="0" width="240" height="667" frameX="-42" frameY="-2" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0002" x="240" y="0" width="282" height="663" frameX="0" frameY="-1" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0003" x="240" y="0" width="282" height="663" frameX="0" frameY="-1" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0004" x="522" y="0" width="268" height="667" frameX="-24" frameY="0" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0005" x="522" y="0" width="268" height="667" frameX="-24" frameY="0" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0006" x="790" y="0" width="256" height="669" frameX="-36" frameY="0" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0007" x="790" y="0" width="256" height="669" frameX="-36" frameY="0" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0008" x="1046" y="0" width="241" height="669" frameX="-41" frameY="0" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0009" x="1046" y="0" width="241" height="669" frameX="-41" frameY="0" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0010" x="1287" y="0" width="240" height="668" frameX="-42" frameY="-1" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0011" x="1287" y="0" width="240" height="668" frameX="-42" frameY="-1" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0012" x="1527" y="0" width="240" height="667" frameX="-42" frameY="-2" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0013" x="1527" y="0" width="240" height="667" frameX="-42" frameY="-2" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello idle dance0014" x="1767" y="0" width="240" height="667" frameX="-42" frameY="-2" frameWidth="292" frameHeight="669"/>
+	<SubTexture name="Marcello Sing Note DOWN0000" x="2007" y="0" width="246" height="669"/>
+	<SubTexture name="Marcello Sing Note DOWN0001" x="2007" y="0" width="246" height="669"/>
+	<SubTexture name="Marcello Sing Note DOWN0002" x="2253" y="0" width="241" height="666" frameX="-5" frameY="-3" frameWidth="246" frameHeight="669"/>
+	<SubTexture name="Marcello Sing Note LEFT0000" x="2494" y="0" width="335" height="668" frameX="-6" frameY="0" frameWidth="342" frameHeight="668"/>
+	<SubTexture name="Marcello Sing Note LEFT0001" x="2494" y="0" width="335" height="668" frameX="-6" frameY="0" frameWidth="342" frameHeight="668"/>
+	<SubTexture name="Marcello Sing Note LEFT0002" x="2829" y="0" width="342" height="668"/>
+	<SubTexture name="Marcello Sing Note RIGHT0000" x="3171" y="0" width="236" height="668" frameX="0" frameY="0" frameWidth="246" frameHeight="668"/>
+	<SubTexture name="Marcello Sing Note RIGHT0001" x="3171" y="0" width="236" height="668" frameX="0" frameY="0" frameWidth="246" frameHeight="668"/>
+	<SubTexture name="Marcello Sing Note RIGHT0002" x="3407" y="0" width="241" height="668" frameX="-5" frameY="0" frameWidth="246" frameHeight="668"/>
+	<SubTexture name="Marcello Sing Note UP0000" x="3648" y="0" width="267" height="666"/>
+	<SubTexture name="Marcello Sing Note UP0001" x="3648" y="0" width="267" height="666"/>
+	<SubTexture name="Marcello Sing Note UP0002" x="0" y="669" width="250" height="664" frameX="-5" frameY="-2" frameWidth="267" frameHeight="666"/>
+</TextureAtlas>

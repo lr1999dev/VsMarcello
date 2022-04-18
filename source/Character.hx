@@ -118,21 +118,105 @@ class Character extends FlxSprite
 
 				flipX = true;
 
+			case 'bambiP':
+				// fix weird animation bug
+				curCharacter = 'bf-bambi';
+
+				var tex = Paths.getSparrowAtlas('bambiP', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'BF idle dance', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE LEFT MISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE RIGHT MISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
+				animation.addByPrefix('hey', 'BF HEY', 24, false);
+	
+				animation.addByPrefix('firstDeath', "BF dies", 24, false);
+				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
+				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
+	
+				animation.addByPrefix('scared', 'BF idle shaking', 24);
+	
+				addOffset('idle', -5);
+				addOffset("singUP", -29, 27);
+				addOffset("singLEFT", -38, -7);
+				addOffset("singRIGHT", 12, -6);
+				addOffset("singDOWN", -10, -50);
+				addOffset("singUPmiss", -29, 27);
+				addOffset("singLEFTmiss", -30, 21);
+				addOffset("singRIGHTmiss", 12, 24);
+				addOffset("singDOWNmiss", -11, -19);
+				addOffset("hey", 7, 4);
+				addOffset('firstDeath', 37, 11);
+				addOffset('deathLoop', 37, 5);
+				addOffset('deathConfirm', 37, 69);
+				addOffset('scared', -4);
+	
+				playAnim('idle');
+	
+				flipX = true;
+
 			case 'marcello':
 				// MARCELLO ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('Marcello', 'shared', true);
 				frames = tex;
-				animation.addByPrefix('idle', 'Idle', 24);
-				animation.addByPrefix('singUP', 'Up', 24);
-				animation.addByPrefix('singRIGHT', 'Right', 24);
-				animation.addByPrefix('singDOWN', 'Down', 24);
-				animation.addByPrefix('singLEFT', 'Left', 24);
+				animation.addByPrefix('idle', 'Idle', 24, false);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", -28, 24);
-				addOffset("singRIGHT", -35, -3);
-				addOffset("singLEFT", 43);
-				addOffset("singDOWN", -26, -12);
+				addOffset("singUP", 12, 24);
+				addOffset("singRIGHT", -25);
+				addOffset("singLEFT", 13);
+				addOffset("singDOWN", 14, -14);
+
+				setGraphicSize(Std.int(width * 1.25));
+				updateHitbox();
+	
+				playAnim('idle');
+
+			case 'marcello-bruh':
+				// MARCELLO ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('marcellobruh', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 24, false);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 12, 24);
+				addOffset("singRIGHT", -25);
+				addOffset("singLEFT", 13);
+				addOffset("singDOWN", 14, -14);
+
+				setGraphicSize(Std.int(width * 1.25));
+				updateHitbox();
+	
+				playAnim('idle');
+	
+			case 'marcello-trolled':
+				// MARCELLO ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('marcello_troll', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 24, false);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 12, 24);
+				addOffset("singRIGHT", -25);
+				addOffset("singLEFT", 13);
+				addOffset("singDOWN", 14, -14);
 
 				setGraphicSize(Std.int(width * 1.25));
 				updateHitbox();
@@ -141,13 +225,52 @@ class Character extends FlxSprite
 	
 			case 'marcello-angry':
 				// MARCELLO ANIMATION LOADING CODE
-				tex = Paths.getSparrowAtlas('Marcello_Mad', 'shared', true);
+				tex = Paths.getSparrowAtlas('marcellobruh', 'shared', true);
 				frames = tex;
-				animation.addByPrefix('idle', 'Idle', 24);
-				animation.addByPrefix('singUP', 'Up', 24);
-				animation.addByPrefix('singRIGHT', 'Right', 24);
-				animation.addByPrefix('singDOWN', 'Down', 24);
-				animation.addByPrefix('singLEFT', 'Left', 24);
+				animation.addByPrefix('idle', 'Idle', 24, false);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 12, 24);
+				addOffset("singRIGHT", -25);
+				addOffset("singLEFT", 13);
+				addOffset("singDOWN", 14, -14);
+
+				setGraphicSize(Std.int(width * 1.25));
+				updateHitbox();
+	
+				playAnim('idle');
+
+			case 'joldy':
+				// JOLDY ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('Joldy_sprites', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'Joldy Idle', 24, false);
+				animation.addByPrefix('singUP', 'Joldy note up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Joldy note right', 24, false);
+				animation.addByPrefix('singDOWN', 'Joldy note down', 24, false);
+				animation.addByPrefix('singLEFT', 'Joldy note left', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", -10, 120);
+				addOffset("singRIGHT", -70, -110);
+				addOffset("singLEFT", 297, -199);
+				addOffset("singDOWN", 50, -80);
+	
+				playAnim('idle');
+
+			case 'marcello-angry-old':
+				// MARCELLO ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('old_madcello', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'Idle', 24, false);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP", -28, 24);
@@ -159,6 +282,41 @@ class Character extends FlxSprite
 				updateHitbox();
 	
 				playAnim('idle');
+
+			case 'marcello-old':
+				tex = Paths.getSparrowAtlas('Marcello_Old', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'Marcello idle dance', 24, false);
+				animation.addByPrefix('singUP', 'Marcello Sing Note UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'Marcello Sing Note RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'Marcello Sing Note DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'Marcello Sing Note LEFT', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", -53, -3);
+				addOffset("singRIGHT", -46, 0);
+				addOffset("singLEFT", 61, 0);
+				addOffset("singDOWN", -46, 0);
+	
+				playAnim('idle');
+
+			case 'marcello-joke':
+				tex = Paths.getSparrowAtlas('Marcello_Joke', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'Dad idle dance', 24, false);
+				animation.addByPrefix('singUP', 'Dad Sing Note UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'Dad Sing Note RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'Dad Sing Note DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'Dad Sing Note LEFT', 24, false);
+	
+				addOffset('idle');
+				addOffset("singUP", -6, 50);
+				addOffset("singRIGHT", 0, 27);
+				addOffset("singLEFT", -10, 10);
+				addOffset("singDOWN", 0, -30);
+	
+				playAnim('idle');
+
 			case 'bf-pixel':
 				frames = Paths.getSparrowAtlas('bfPixel', 'shared', true);
 				animation.addByPrefix('idle', 'BF IDLE', 24, false);
@@ -227,17 +385,21 @@ class Character extends FlxSprite
 			case 'bambi':
 				tex = Paths.getSparrowAtlas('bambi_assets', 'shared', true);
 				frames = tex;
-				animation.addByPrefix('idle', 'Marcello idle dance', 24);
-				animation.addByPrefix('singUP', 'Marcello Note Anim UP', 24);
-				animation.addByPrefix('singRIGHT', 'Marcello Note Anim RIGHT', 24);
-				animation.addByPrefix('singDOWN', 'Marcello Note Anim DOWN', 24);
-				animation.addByPrefix('singLEFT', 'Marcello Note Anim LEFT', 24);
+				animation.addByPrefix('idle', 'IDLE0', 24, false);
+				animation.addByPrefix('idle-alt', 'IDLE NO MIC', 24, false);
+				animation.addByPrefix('mic', 'PULLOUT', 24, false);
+				animation.addByPrefix('singUP', 'UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'LEFT', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", -53, -3);
-				addOffset("singRIGHT", -46, 0);
-				addOffset("singLEFT", 61, 0);
-				addOffset("singDOWN", -46, 0);
+				addOffset('idle-alt', -30);
+				addOffset('mic', 17, -2);
+				addOffset("singUP", 6, 61);
+				addOffset("singRIGHT", -38, -3);
+				addOffset("singLEFT", 12, -2);
+				addOffset("singDOWN", -29, -29);
 	
 				playAnim('idle');
 				setGraphicSize(Std.int(width * 2));
@@ -246,22 +408,83 @@ class Character extends FlxSprite
 			case 'bambi-evil':
 				tex = Paths.getSparrowAtlas('bambi_evil', 'shared', true);
 				frames = tex;
-				animation.addByPrefix('idle', 'Marcello idle dance', 24);
-				animation.addByPrefix('singUP', 'Marcello Note Anim UP', 24);
-				animation.addByPrefix('singRIGHT', 'Marcello Note Anim RIGHT', 24);
-				animation.addByPrefix('singDOWN', 'Marcello Note Anim DOWN', 24);
-				animation.addByPrefix('singLEFT', 'Marcello Note Anim LEFT', 24);
+				animation.addByPrefix('idle', 'IDLE', 24, false);
+				animation.addByPrefix('singUP', 'UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'LEFT', 24, false);
 	
 				addOffset('idle');
-				addOffset("singUP");
-				addOffset("singRIGHT");
-				addOffset("singLEFT");
-				addOffset("singDOWN");
+				addOffset("singUP", -19 * 0.75, 354 * 0.75);
+				addOffset("singRIGHT", -12 * 0.75, -6 * 0.75);
+				addOffset("singLEFT", 195 * 0.75, -6 * 0.75);
+				addOffset("singDOWN", 33 * 0.75, -67 * 0.75);
 		
 				playAnim('idle');
-				setGraphicSize(Std.int(width * 2));
+				setGraphicSize(Std.int(width * 1.5));
 				updateHitbox();
 				antialiasing = false;
+			case 'bf-funhouse':
+				frames = Paths.getSparrowAtlas('funhouse_bf', 'shared', true);
+				animation.addByPrefix('idle', 'IDLE', 24, false);
+				animation.addByPrefix('singUP', 'UP', 24, false);
+				animation.addByPrefix('singLEFT', 'LEFT', 24, false);
+				animation.addByPrefix('singRIGHT', 'RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'DOWN', 24, false);
+				animation.addByPrefix('singUPmiss', 'MISSUP', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'MISSLEFT', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'MISSRIGHT', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'MISSDOWN', 24, false);
+	
+				addOffset('idle');
+				addOffset("singUP", -93, 17);
+				addOffset("singRIGHT", -105, -5);
+				addOffset("singLEFT", -67, -8);
+				addOffset("singDOWN", -80, -12);
+				addOffset("singUPmiss", -93, 17);
+				addOffset("singRIGHTmiss", -105, -5);
+				addOffset("singLEFTmiss", -67, -8);
+				addOffset("singDOWNmiss", -80, -12);
+	
+				setGraphicSize(Std.int(width * 1.5));
+				updateHitbox();
+	
+				playAnim('idle');
+	
+				antialiasing = false;
+	
+				flipX = true;
+
+			case 'marcloo-gf':
+				tex = Paths.getSparrowAtlas('marcloo_gf', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
+				animation.addByPrefix('singLEFT', 'GF left note', 24, false);
+				animation.addByPrefix('singRIGHT', 'GF Right Note', 24, false);
+				animation.addByPrefix('singUP', 'GF Up Note', 24, false);
+				animation.addByPrefix('singDOWN', 'GF Down Note', 24, false);
+				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+				animation.addByIndices('hairBlow', "GF Dancing Beat Hair blowing", [0, 1, 2, 3], "", 24);
+				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
+				animation.addByPrefix('scared', 'GF FEAR', 24);
+	
+				addOffset('cheer');
+				addOffset('sad', -2, -2);
+				addOffset('danceLeft', 0, -9);
+				addOffset('danceRight', 0, -9);
+	
+				addOffset("singUP", 0, 4);
+				addOffset("singRIGHT", 0, -20);
+				addOffset("singLEFT", 0, -19);
+				addOffset("singDOWN", 0, -20);
+				addOffset('hairBlow', 45, -8);
+				addOffset('hairFall', 0, -9);
+	
+				addOffset('scared', -2, -17);
+	
+				playAnim('danceRight');
 		}
 
 		dance();
@@ -313,7 +536,7 @@ class Character extends FlxSprite
 		{
 			case 'gf':
 				if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
-					playAnim('danceRight');
+					playAnim('danceRight', true);
 		}
 
 		super.update(elapsed);
@@ -324,64 +547,33 @@ class Character extends FlxSprite
 	/**
 	 * FOR GF DANCING SHIT
 	 */
-	public function dance()
+	public function dance(fuckingDipshitKysBitchStupidAssProgrammingLanguage:Bool = false)
 	{
+		if(animation.curAnim.name == 'mic')
+		{
+			return;
+		}
+		var stupidFuckingIdiotIHateYou:String = '';
+		if(fuckingDipshitKysBitchStupidAssProgrammingLanguage)
+		{
+			stupidFuckingIdiotIHateYou = '-alt';
+		}
 		if (!debugMode)
 		{
 			switch (curCharacter)
 			{
-				case 'gf':
+				case 'gf' | 'marcloo-gf' | 'gf-christmas' | 'gf-car' | 'gf-pixel' | 'spooky':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;
 
 						if (danced)
-							playAnim('danceRight');
+							playAnim('danceRight' + stupidFuckingIdiotIHateYou, true);
 						else
-							playAnim('danceLeft');
+							playAnim('danceLeft' + stupidFuckingIdiotIHateYou, true);
 					}
-
-				case 'gf-christmas':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-
-				case 'gf-car':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-				case 'gf-pixel':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-
-				case 'spooky':
-					danced = !danced;
-
-					if (danced)
-						playAnim('danceRight');
-					else
-						playAnim('danceLeft');
 				default:
-					playAnim('idle');
+					playAnim('idle' + stupidFuckingIdiotIHateYou, true);
 			}
 		}
 	}

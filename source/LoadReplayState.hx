@@ -39,15 +39,17 @@ class LoadReplayState extends MusicBeatState
 
         controlsStrings.sort(Reflect.compare);
 
-        addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
-        addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky']);
-        addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
+        addWeek(['Tutorial'], 0, ['gf']);
 
-        addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['mom']);
-        addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
-        
-        addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
+		addWeek(['Comecful', 'Trollhazard', 'Blocking'], 1, ['marcello', 'marcello', 'marcello-angry']);
 
+		addWeek(['Fun-House', 'Something-Important', 'Two-Notebooks'], 2, ['bambi', 'bambi', 'bambi-evil']);
+
+		addWeek(['Death-Threats'], 1, ['jumpman']);
+
+		addWeek(['Old-Comecful', 'Old-Trollhazard', 'Old-Blocking'], 1, ['marcello-old']);
+
+		addWeek(['Markbattle', 'Joldy'], 1, ['marcello-joke', 'joldy']);
 
         for(i in 0...controlsStrings.length)
         {

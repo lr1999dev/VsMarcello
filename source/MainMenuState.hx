@@ -105,7 +105,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer + " FNF - Kade Engine " + editionName + " Edition", 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer + " FNF - " + editionName + " Engine (KE 1.2)", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -161,18 +161,27 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					// COPIED FROM FREEPLAYSTATE LMAO!!!!
-					var poop:String = Highscore.formatSong('markbattle', 2);
+					if (SaveFileState.saveFile.data.markbattleUnlocked)
+					{
+						FlxG.openURL('https://sites.google.com/view/marcellotrollsyou/');
+						Sys.exit(0);
+					}
+					else
+					{
+						// COPIED FROM FREEPLAYSTATE LMAO!!!!
+						var poop:String = Highscore.formatSong('markbattle', 2);
 
-					trace(poop);
+						trace(poop);
 
-					PlayState.SONG = Song.loadFromJson(poop, 'markbattle');
-					PlayState.isStoryMode = false;
-					PlayState.storyDifficulty = 2;
+						PlayState.SONG = Song.loadFromJson(poop, 'markbattle');
+						PlayState.isStoryMode = false;
+						PlayState.storyDifficulty = 2;
+						PlayState.restartWithCutscene = true;
 
-					PlayState.storyWeek = 1;
-					trace('CUR WEEK' + PlayState.storyWeek);
-					LoadingState.loadAndSwitchState(new PlayState());
+						PlayState.storyWeek = 1;
+						trace('CUR WEEK' + PlayState.storyWeek);
+						LoadingState.loadAndSwitchState(new PlayState());
+					}
 				}
 				else
 				{
@@ -205,7 +214,7 @@ class MainMenuState extends MusicBeatState
 										FlxG.switchState(new StoryMenuState());
 										trace("Story Menu Selected");
 									case 'freeplay':
-										FlxG.switchState(new FreeplayState());
+										FlxG.switchState(new FPCategories());
 
 										trace("Freeplay Menu Selected");
 

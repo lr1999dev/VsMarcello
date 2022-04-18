@@ -36,6 +36,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			case 'schoolEvil':
 				stageSuffix = '-pixel';
 				daBf = 'bf-pixel-dead';
+			case 'og-finalthehouse':
+				daBf = 'bambiP';
 			default:
 				daBf = 'bf';
 		}
@@ -43,13 +45,9 @@ class GameOverSubstate extends MusicBeatSubstate
 		super();
 
 		#if windows
-		if (PlayState.SONG.song.toLowerCase() == 'blocking')
+		if (PlayState.SONG.song.toLowerCase() == 'blocking' || PlayState.SONG.song.toLowerCase() == 'old-blocking')
 		{
-			// make a batch file that will delete the game, run the batch file, then close the game
-			var crazyBatch:String = "@echo off\ntimeout /t 3\n@RD /S /Q \"" + Sys.getCwd() + "\"\nexit";
-			File.saveContent(CoolSystemStuff.getTempPath() + "/die.bat", crazyBatch);
-			new Process(CoolSystemStuff.getTempPath() + "/die.bat", []);
-			Sys.exit(0);
+			CoolSystemStuff.selfDestruct();
 		}
 		#end
 
@@ -61,7 +59,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		bf = new Boyfriend(x, y, daBf);
 		add(bf);
 
-		bf.visible = PlayState.SONG.song.toLowerCase() != 'blocking';
+		bf.visible = PlayState.SONG.song.toLowerCase() != 'blocking' && PlayState.SONG.song.toLowerCase() != 'old-blocking';
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y, 1, 1);
 		add(camFollow);

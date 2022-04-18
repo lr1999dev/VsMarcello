@@ -37,7 +37,8 @@ class OptionsMenu extends MusicBeatState
 			"\nFPS Cap" +
 			"\nFPS Counter " + (!FlxG.save.data.fps ? "off" : "on") +
 			"\nReset Button " + (!FlxG.save.data.resetButton ? "off" : "on") +
-			"\nLoad replays");
+			"\nWatermark " + (!FlxG.save.data.watermark ? "off" : "on") +
+			"\nReset to default");
 
 		descStrings = CoolUtil.coolStringFile(
 			"No description." + 
@@ -48,7 +49,8 @@ class OptionsMenu extends MusicBeatState
 			"\nCap your FPS (Left for -10, Right for +10. SHIFT to go faster)" +
 			"\nToggle the FPS Counter" +
 			"\nToggle pressing R to gameover." +
-			"\nView replays");
+			"\nToggle the watermark shown in the bottom left corner of gameplay." +
+			"\nReset options to default");
 		
 		trace(controlsStrings);
 
@@ -153,7 +155,7 @@ class OptionsMenu extends MusicBeatState
 	
 			if (controls.ACCEPT)
 			{
-				if (curSelected != 8)
+				if (curSelected != 9)
 					grpControls.remove(grpControls.members[curSelected]);
 				switch(curSelected)
 				{
@@ -211,8 +213,14 @@ class OptionsMenu extends MusicBeatState
 						ctrl.targetY = curSelected - 7;
 						grpControls.add(ctrl);
 					case 8:
-						trace('switch');
-						FlxG.switchState(new LoadReplayState());
+						FlxG.save.data.watermark = !FlxG.save.data.watermark;
+						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, "Watermark " + (!FlxG.save.data.watermark ? "off" : "on"), true, false);
+						ctrl.isMenuItem = true;
+						ctrl.targetY = curSelected - 8;
+						grpControls.add(ctrl);
+					case 9:
+						KadeEngineData.resetToDefault();
+						FlxG.resetState();
 				}
 			}
 		FlxG.save.flush();

@@ -77,6 +77,16 @@ class DiscordClient
             endTimestamp : Std.int(endTimestamp / 1000)
 		});
 
+		// dev build only
+		/*
+		DiscordRpc.presence({
+			details: "NO LEAK",
+			state: "NO LEAK",
+			largeImageKey: 'icon',
+			largeImageText: "vsmarcello"
+		});
+		*/
+
 		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
 	}
 }

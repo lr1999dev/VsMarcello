@@ -22,16 +22,26 @@ class KadeEngineData
 		if (FlxG.save.data.accuracyDisplay == null)
 			FlxG.save.data.accuracyDisplay = true;
 
-		if (FlxG.save.data.accuracyDisplay == null)
-			FlxG.save.data.accuracyDisplay = true;
-
-		if (FlxG.save.data.offset == null)
-			FlxG.save.data.offset = 0;
-
         if (FlxG.save.data.offset == null)
 			FlxG.save.data.offset = 0;
 
         if (FlxG.save.data.songPosition == null)
             FlxG.save.data.songPosition = false;
+
+		if (FlxG.save.data.watermark == null)
+			FlxG.save.data.watermark = true;
     }
+
+	public static function resetToDefault()
+	{
+		FlxG.save.data.fps = true;
+		FlxG.save.data.fpsCap = 120;
+		FlxG.save.data.newInput = true;
+		FlxG.save.data.downscroll = false;
+		FlxG.save.data.dfjk = false;
+		FlxG.save.data.accuracyDisplay = true;
+		FlxG.save.data.offset = 0;
+		FlxG.save.data.songPosition = false;
+		FlxG.save.data.watermark = true;
+	}
 }

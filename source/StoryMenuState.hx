@@ -26,28 +26,31 @@ class StoryMenuState extends MusicBeatState
 	var weekData:Array<Dynamic> = [
 		['Tutorial'],
 		['Comecful', 'Trollhazard', 'Blocking'],
-		['Fun-House', 'Two-Notebooks'],
+		['Fun-House', 'Something-Important', 'Two-Notebooks']/*,
 		['Are-You-Cording', 'Channel-Plushies', 'Stole-My-Voice'],
-		['Blammed-Marcellos']
+		['Marpico', 'Show-de-Bola', 'Blammed-Marcellos']
+		*/
 	];
 	var curDifficulty:Int = 1;
 
-	public static var weekUnlocked:Array<Bool> = [true, true, false];
+	public static var weekUnlocked:Array<Bool> = [true, true];
 
 	var weekCharacters:Array<Dynamic> = [
 		['dad', 'bf', 'gf'],
 		['marcello', 'bf', 'gf'],
-		['none', 'none', 'none'],
+		['none', 'none', 'none']/*,
 		['none', 'none', 'none'],
 		['none', 'none', 'none']
+		*/
 	];
 
 	var weekNames:Array<String> = [
 		"",
-		"MARCELLO BASICS03",
-		"Coming Soon",
-		"Coming Soon",
-		"Coming Soon"
+		"The Break-in Troll",
+		"Marcello's Fun House!"/*,
+		"Marcello gets doxxed IRL",
+		"Marpico's Marvelous Marpicing!"
+		*/
 	];
 
 	var txtWeekTitle:FlxText;
@@ -124,11 +127,6 @@ class StoryMenuState extends MusicBeatState
 		grpLocks = new FlxTypedGroup<FlxSprite>();
 		add(grpLocks);
 
-		trace("Line 70");
-
-		//weekUnlocked[2] = (SaveFileState.saveFile.data.marcelloWeekComplete != null && SaveFileState.saveFile.data.marcelloWeekComplete);
-		weekUnlocked[2] = false;
-
 		for (i in 0...weekData.length)
 		{
 			var weekThing:MenuItem = new MenuItem(0, yellowBG.y + yellowBG.height + 10, i);
@@ -152,8 +150,6 @@ class StoryMenuState extends MusicBeatState
 				grpLocks.add(lock);
 			}
 		}
-
-		trace("Line 96");
 
 		for (char in 0...3)
 		{
@@ -188,8 +184,6 @@ class StoryMenuState extends MusicBeatState
 		difficultySelectors = new FlxGroup();
 		add(difficultySelectors);
 
-		trace("Line 124");
-
 		leftArrow = new FlxSprite(grpWeekText.members[0].x + grpWeekText.members[0].width + 10, grpWeekText.members[0].y + 10);
 		leftArrow.frames = ui_tex;
 		leftArrow.animation.addByPrefix('idle', "arrow left");
@@ -214,8 +208,6 @@ class StoryMenuState extends MusicBeatState
 		rightArrow.animation.play('idle');
 		difficultySelectors.add(rightArrow);
 
-		trace("Line 150");
-
 		add(yellowBG);
 		add(grpWeekCharacters);
 
@@ -231,8 +223,7 @@ class StoryMenuState extends MusicBeatState
 		add(txtWeekTitle);
 
 		updateText();
-
-		trace("Line 165");
+		updateWeekBg();
 
 		super.create();
 	}
@@ -502,15 +493,15 @@ class StoryMenuState extends MusicBeatState
 		switch (curWeek)
 		{
 			case 1:
-				imgPath = Paths.image('storymenu/marcelloweek_placeholder');
+				imgPath = Paths.image('storymenu/marcelloweek');
 			case 2:
-				imgPath = Paths.image('storymenu/marcellosfunhouseweek_thing');
+				imgPath = Paths.image('storymenu/marcellosfunhouseweek');
 			case 3:
-				imgPath = Paths.image('storymenu/irlweek_thing');
+				imgPath = Paths.image('storymenu/irlweek');
 			case 4:
-				imgPath = Paths.image('storymenu/marpicoweek_thing');
+				imgPath = Paths.image('storymenu/marpicoweek');
 			default:
-				imgPath = Paths.image('storymenu/none');
+				imgPath = Paths.image('storymenu/tutorial');
 		}
 		
 		weekBg.destroy();

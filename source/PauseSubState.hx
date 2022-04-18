@@ -17,6 +17,7 @@ class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
+	var realItems:Int = 3;
 	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Restart with Cutscene', 'Exit to menu'];
 	var curSelected:Int = 0;
 
@@ -52,7 +53,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(levelDifficulty);
 
 		var levelDeaths:FlxText = new FlxText(20, 79, 0, "", 32);
-		levelDeaths.text += "Blue balled: " + PlayState.deaths;
+		levelDeaths.text += "Showed balls: " + PlayState.deaths;
 		levelDeaths.scrollFactor.set();
 		levelDeaths.setFormat(Paths.font('vcr.ttf'), 32);
 		levelDeaths.updateHitbox();
@@ -72,6 +73,30 @@ class PauseSubState extends MusicBeatSubstate
 
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
+
+		if (PlayState.SONG.song.toLowerCase() == 'blocking')
+		{
+			menuItems = [];
+
+			for (i in 0...100)
+			{
+				menuItems.push('Resume');	
+			}
+
+			menuItems.push('Crash game');
+			realItems = 50;
+		}
+
+		if (PlayState.SONG.song.toLowerCase() == 'two-notebooks')
+		{
+			for (i in 0...15)
+			{
+				menuItems.push('');	
+			}
+
+			menuItems.push('Joldy');
+		}
+
 
 		for (i in 0...menuItems.length)
 		{
@@ -97,13 +122,16 @@ class PauseSubState extends MusicBeatSubstate
 		var downP = controls.DOWN_P;
 		var accepted = controls.ACCEPT;
 
-		if (upP)
+		if (menuItems[curSelected] != "Crash game")
 		{
-			changeSelection(-1);
-		}
-		if (downP)
-		{
-			changeSelection(1);
+			if (upP)
+			{
+				changeSelection(-1);
+			}
+			if (downP)
+			{
+				changeSelection(1);
+			}
 		}
 
 		if (accepted)
@@ -122,6 +150,19 @@ class PauseSubState extends MusicBeatSubstate
 				case "Exit to menu":
 					PlayState.loadRep = false;
 					FlxG.switchState(new MainMenuState());
+				case "Crash game":
+					Sys.exit(0);
+				case 'Joldy':
+					SaveFileState.saveFile.data.joldyUnlocked = true;
+					if(PlayState.storyDifficulty == 3)
+					{
+						PlayState.storyDifficulty = 2;
+					}
+					var poop:String = Highscore.formatSong('joldy', PlayState.storyDifficulty);
+					trace(poop);
+					PlayState.SONG = Song.loadFromJson(poop, 'joldy');
+					PlayState.isStoryMode = false;
+					LoadingState.loadAndSwitchState(new PlayState());
 			}
 		}
 
@@ -144,7 +185,7 @@ class PauseSubState extends MusicBeatSubstate
 		curSelected += change;
 
 		if (curSelected < 0)
-			curSelected = menuItems.length - 1;
+			curSelected = realItems;				
 		if (curSelected >= menuItems.length)
 			curSelected = 0;
 
@@ -162,6 +203,17 @@ class PauseSubState extends MusicBeatSubstate
 			{
 				item.alpha = 1;
 				// item.setGraphicSize(Std.int(item.width));
+			}
+		}
+
+		if (menuItems[curSelected] == "Crash game")
+		{
+			for (i in grpMenuShit.members)
+			{
+				if (i.text != "Crash game")
+				{
+					FlxTween.tween(i, {alpha: 0}, 1.3, {ease: FlxEase.quadOut});
+				}
 			}
 		}
 	}
