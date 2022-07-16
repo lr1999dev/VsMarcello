@@ -26,7 +26,7 @@ class KadeEngineData
 			FlxG.save.data.offset = 0;
 
         if (FlxG.save.data.songPosition == null)
-            FlxG.save.data.songPosition = false;
+            FlxG.save.data.songPosition = 0;
 
 		if (FlxG.save.data.watermark == null)
 			FlxG.save.data.watermark = true;
@@ -41,7 +41,7 @@ class KadeEngineData
 		FlxG.save.data.dfjk = false;
 		FlxG.save.data.accuracyDisplay = true;
 		FlxG.save.data.offset = 0;
-		FlxG.save.data.songPosition = false;
+		FlxG.save.data.songPosition = 0;
 		FlxG.save.data.watermark = true;
 	}
 }

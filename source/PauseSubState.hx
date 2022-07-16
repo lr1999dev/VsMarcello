@@ -74,7 +74,7 @@ class PauseSubState extends MusicBeatSubstate
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
 
-		if (PlayState.SONG.song.toLowerCase() == 'blocking')
+		if (PlayState.SONG.song.toLowerCase() == 'blocking' || PlayState.SONG.song.toLowerCase() == 'two-notebooks')
 		{
 			menuItems = [];
 
@@ -86,17 +86,6 @@ class PauseSubState extends MusicBeatSubstate
 			menuItems.push('Crash game');
 			realItems = 50;
 		}
-
-		if (PlayState.SONG.song.toLowerCase() == 'two-notebooks')
-		{
-			for (i in 0...15)
-			{
-				menuItems.push('');	
-			}
-
-			menuItems.push('Joldy');
-		}
-
 
 		for (i in 0...menuItems.length)
 		{

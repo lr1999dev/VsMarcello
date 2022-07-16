@@ -395,11 +395,11 @@ class Character extends FlxSprite
 
 				addOffset('idle');
 				addOffset('idle-alt', -30);
-				addOffset('mic', 17, -2);
-				addOffset("singUP", 6, 61);
-				addOffset("singRIGHT", -38, -3);
-				addOffset("singLEFT", 12, -2);
-				addOffset("singDOWN", -29, -29);
+				addOffset('mic', -30);
+				addOffset("singUP", -30);
+				addOffset("singRIGHT", -30);
+				addOffset("singLEFT", -30);
+				addOffset("singDOWN", -30);
 	
 				playAnim('idle');
 				setGraphicSize(Std.int(width * 2));
@@ -415,10 +415,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'LEFT', 24, false);
 	
 				addOffset('idle');
-				addOffset("singUP", -19 * 0.75, 354 * 0.75);
-				addOffset("singRIGHT", -12 * 0.75, -6 * 0.75);
-				addOffset("singLEFT", 195 * 0.75, -6 * 0.75);
-				addOffset("singDOWN", 33 * 0.75, -67 * 0.75);
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
 		
 				playAnim('idle');
 				setGraphicSize(Std.int(width * 1.5));
@@ -437,14 +437,14 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWNmiss', 'MISSDOWN', 24, false);
 	
 				addOffset('idle');
-				addOffset("singUP", -93, 17);
-				addOffset("singRIGHT", -105, -5);
-				addOffset("singLEFT", -67, -8);
-				addOffset("singDOWN", -80, -12);
-				addOffset("singUPmiss", -93, 17);
-				addOffset("singRIGHTmiss", -105, -5);
-				addOffset("singLEFTmiss", -67, -8);
-				addOffset("singDOWNmiss", -80, -12);
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+				addOffset("singUPmiss");
+				addOffset("singRIGHTmiss");
+				addOffset("singLEFTmiss");
+				addOffset("singDOWNmiss");
 	
 				setGraphicSize(Std.int(width * 1.5));
 				updateHitbox();
@@ -547,16 +547,16 @@ class Character extends FlxSprite
 	/**
 	 * FOR GF DANCING SHIT
 	 */
-	public function dance(fuckingDipshitKysBitchStupidAssProgrammingLanguage:Bool = false)
+	public function dance(forceAlt:Bool = false)
 	{
-		if(animation.curAnim.name == 'mic')
+		if (animation.curAnim.name == 'mic')
 		{
 			return;
 		}
-		var stupidFuckingIdiotIHateYou:String = '';
-		if(fuckingDipshitKysBitchStupidAssProgrammingLanguage)
+		var altAnim:String = '';
+		if (forceAlt)
 		{
-			stupidFuckingIdiotIHateYou = '-alt';
+			altAnim = '-alt';
 		}
 		if (!debugMode)
 		{
@@ -568,12 +568,12 @@ class Character extends FlxSprite
 						danced = !danced;
 
 						if (danced)
-							playAnim('danceRight' + stupidFuckingIdiotIHateYou, true);
+							playAnim('danceRight' + altAnim, true);
 						else
-							playAnim('danceLeft' + stupidFuckingIdiotIHateYou, true);
+							playAnim('danceLeft' + altAnim, true);
 					}
 				default:
-					playAnim('idle' + stupidFuckingIdiotIHateYou, true);
+					playAnim('idle' + altAnim, true);
 			}
 		}
 	}

@@ -27,13 +27,14 @@ class OptionsMenu extends MusicBeatState
 	var versionShit:FlxText;
 	override function create()
 	{
+		var songPosThingy = ["off", "on", "time only", "bar only"];
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		controlsStrings = CoolUtil.coolStringFile(
 			(FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + 
 			"\n" + (FlxG.save.data.newInput ? "New input" : "Old Input") + 
 			"\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + 
 			"\nAccuracy " + (!FlxG.save.data.accuracyDisplay ? "off" : "on") + 
-			"\nSong Position " + (!FlxG.save.data.songPosition ? "off" : "on") +
+			"\nSong Position " + songPosThingy[FlxG.save.data.songPosition] +
 			"\nFPS Cap" +
 			"\nFPS Counter " + (!FlxG.save.data.fps ? "off" : "on") +
 			"\nReset Button " + (!FlxG.save.data.resetButton ? "off" : "on") +
@@ -189,8 +190,12 @@ class OptionsMenu extends MusicBeatState
 						ctrl.targetY = curSelected - 3;
 						grpControls.add(ctrl);
 					case 4:
-						FlxG.save.data.songPosition = !FlxG.save.data.songPosition;
-						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, "Song Position " + (!FlxG.save.data.songPosition ? "off" : "on"), true, false);
+						if (FlxG.save.data.songPosition == 3)
+							FlxG.save.data.songPosition = -1;
+
+						FlxG.save.data.songPosition++;
+						var songPosThingy = ["off", "on", "time only", "bar only"];
+						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, "Song Position " + songPosThingy[FlxG.save.data.songPosition], true, false);
 						ctrl.isMenuItem = true;
 						ctrl.targetY = curSelected - 4;
 						grpControls.add(ctrl);

@@ -70,7 +70,7 @@ class TitleState extends MusicBeatState
 		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
 		*/
-		
+
 		#if sys
 		if (!sys.FileSystem.exists(Sys.getCwd() + "\\assets\\replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "\\assets\\replays");
@@ -529,7 +529,7 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['LR1999', 'OlyanTwo', 'Cynda', 'Rapparep LOL']);
+				createCoolText(['LR1999', 'OlyanTwo', 'Rapparep LOL']);
 			// credTextShit.visible = true;
 			case 3:
 				addMoreText('Present');

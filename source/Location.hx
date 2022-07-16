@@ -82,7 +82,7 @@ class Location
         var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-        return c * 6371; // return distance in km
+        return c * 6371;
     }
 
     static function toRad(value:Float)

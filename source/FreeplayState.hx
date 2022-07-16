@@ -53,21 +53,11 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
-			if (data[0].toLowerCase() == 'markbattle' || data[0].toLowerCase() == 'joldy')
+			if (data[0].toLowerCase() == 'markbattle' && curCategory != 'extras')
 			{
 				throw 'Get trolled idiot';
 			}
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
-		}
-
-		if (SaveFileState.saveFile.data.markbattleUnlocked && curCategory == 'extras')
-		{
-			addSong('Markbattle', 1, "marcello-joke");
-		}
-
-		if (SaveFileState.saveFile.data.joldyUnlocked && curCategory == 'extras')
-		{
-			addSong('Joldy', 1, "joldy");
 		}
 
 		/* 

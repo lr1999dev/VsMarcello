@@ -26,7 +26,7 @@ class FPCategories extends MusicBeatState
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
-	var initSonglist = ['week1', 'week2', 'extras'];
+	var initSonglist = ['week1', 'week2'];
 
 	override function create()
 	{
@@ -45,6 +45,11 @@ class FPCategories extends MusicBeatState
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
+
+		if (SaveFileState.saveFile.data.markbattleUnlocked)
+		{
+			initSonglist.push('extras');
+		}
 
 		for (i in 0...initSonglist.length)
 		{

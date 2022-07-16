@@ -11,6 +11,9 @@ import flixel.util.FlxStringUtil;
 import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
 import openfl.Lib;
+import openfl.utils.ByteArray;
+import flash.display.BitmapData;
+import flixel.util.FlxTimer;
 
 using StringTools;
 

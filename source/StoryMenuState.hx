@@ -25,8 +25,8 @@ class StoryMenuState extends MusicBeatState
 
 	var weekData:Array<Dynamic> = [
 		['Tutorial'],
-		['Comecful', 'Trollhazard', 'Blocking'],
-		['Fun-House', 'Something-Important', 'Two-Notebooks']/*,
+		['Comecful', 'Trollhazard'],
+		['Fun-House', 'Two-Notebooks']/*,
 		['Are-You-Cording', 'Channel-Plushies', 'Stole-My-Voice'],
 		['Marpico', 'Show-de-Bola', 'Blammed-Marcellos']
 		*/
